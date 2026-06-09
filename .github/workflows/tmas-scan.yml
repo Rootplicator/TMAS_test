@@ -26,4 +26,3 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
         env:
           TMAS_API_KEY: ${{ secrets.TMAS_API_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
