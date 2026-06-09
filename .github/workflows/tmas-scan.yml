@@ -10,8 +10,6 @@ permissions:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -21,8 +19,9 @@ jobs:
       - name: Run TMAS Scan
         uses: trendmicro/tmas-scan-action@main
         with:
-          artifact: "registry:docker.io/library/nginx:latest"
-          region: "us-east-1"
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-        env:
-          TMAS_API_KEY: ${{ secrets.TMAS_API_KEY }}
+          artifact: "registry:docker.io/library/hello-world:latest"
+          tmasApiKey: ${{ secrets.TMAS_API_KEY }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          vulnerabilitiesScan: true
+          malwareScan: true
+          additionalArgs: "--region us-east-1"
